@@ -9,13 +9,13 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           {/* LEFT MENU*/}
           <nav className="hidden md:flex gap-6">
-            <a href="#" className="text-lg hover:underline">
+            <a href="#" className="text-lg hover:text-orange-500">
               MEN
             </a>
-            <a href="#" className="text-lg hover:underline">
+            <a href="#" className="text-lg hover:text-orange-500">
               WOMEN
             </a>
-            <a href="#" className="text-lg hover:underline">
+            <a href="#" className="text-lg hover:text-orange-500">
               LATEST
             </a>
           </nav>
@@ -27,13 +27,13 @@ const Header = () => {
 
           {/* RIGHT MENU */}
           <nav className="hidden md:flex gap-6">
-            <a href="#" className="text-lg font-medium hover:underline">
+            <a href="#" className="text-lg font-medium hover:text-orange-500">
               ABOUT
             </a>
-            <a href="#" className="text-lg font-medium hover:underline">
+            <a href="#" className="text-lg font-medium hover:text-orange-500">
               CONTACT
             </a>
-            <a href="#" className="text-lg font-medium hover:underline">
+            <a href="#" className="text-lg font-medium hover:text-orange-500">
               ACCOUNT
             </a>
           </nav>
@@ -47,24 +47,45 @@ const Header = () => {
                 </Button>
               </SheetTrigger>
 
-              <SheetContent side="left">
+              <SheetContent
+                className="bg-black/50 backdrop-blur-lg text-white"
+                side="right"
+              >
                 <nav className="flex flex-col gap-4 m-3">
-                  <a href="#" className="text-lg font-medium">
+                  <a
+                    href="#"
+                    className="text-lg font-medium hover:text-orange-500"
+                  >
                     MEN
                   </a>
-                  <a href="#" className="text-lg font-medium">
+                  <a
+                    href="#"
+                    className="text-lg font-medium hover:text-orange-500"
+                  >
                     WOMEN
                   </a>
-                  <a href="#" className="text-lg font-medium">
+                  <a
+                    href="#"
+                    className="text-lg font-medium hover:text-orange-500"
+                  >
                     LATEST
                   </a>
-                  <a href="#" className="text-lg font-medium">
+                  <a
+                    href="#"
+                    className="text-lg font-medium hover:text-orange-500"
+                  >
                     ABOUT
                   </a>
-                  <a href="#" className="text-lg font-medium">
+                  <a
+                    href="#"
+                    className="text-lg font-medium hover:text-orange-500"
+                  >
                     CONTACT
                   </a>
-                  <a href="#" className="text-lg font-medium">
+                  <a
+                    href="#"
+                    className="text-lg font-medium hover:text-orange-500"
+                  >
                     ACCOUNT
                   </a>
                 </nav>
