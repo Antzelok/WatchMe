@@ -4,41 +4,41 @@ import { Menu } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="border-b">
+    <header className="border-b text-white bg-black/40 backdrop-blur-lg ">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="relative flex h-16 items-center justify-between">
-          {/* Left menu (desktop) */}
+        <div className="flex h-16 items-center justify-between">
+          {/* LEFT MENU*/}
           <nav className="hidden md:flex gap-6">
-            <a href="#" className="text-sm font-medium hover:underline">
-              Men
+            <a href="#" className="text-lg hover:underline">
+              MEN
             </a>
-            <a href="#" className="text-sm font-medium hover:underline">
-              Women
+            <a href="#" className="text-lg hover:underline">
+              WOMEN
             </a>
-            <a href="#" className="text-sm font-medium hover:underline">
-              Latest
+            <a href="#" className="text-lg hover:underline">
+              LATEST
             </a>
           </nav>
 
           {/* Logo */}
-          <h1 className="text-xl font-bold md:absolute md:left-1/2 md:-translate-x-1/2">
+          <h1 className="text-3xl font-bold md:absolute md:left-1/2 md:-translate-x-1/2">
             WATCHME
           </h1>
 
-          {/* Right menu (desktop) */}
+          {/* RIGHT MENU */}
           <nav className="hidden md:flex gap-6">
-            <a href="#" className="text-sm font-medium hover:underline">
-              About
+            <a href="#" className="text-lg font-medium hover:underline">
+              ABOUT
             </a>
-            <a href="#" className="text-sm font-medium hover:underline">
-              Contact
+            <a href="#" className="text-lg font-medium hover:underline">
+              CONTACT
             </a>
-            <a href="#" className="text-sm font-medium hover:underline">
-              Account
+            <a href="#" className="text-lg font-medium hover:underline">
+              ACCOUNT
             </a>
           </nav>
 
-          {/* Mobile menu */}
+          {/* MOBILE MENU */}
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
@@ -50,22 +50,22 @@ const Header = () => {
               <SheetContent side="left">
                 <nav className="flex flex-col gap-4 mt-6">
                   <a href="#" className="text-sm font-medium">
-                    Men
+                    MEN
                   </a>
-                  <a href="#" className="text-sm font-medium">
-                    Women
+                  <a href="#" className="text-lg font-medium">
+                    WOMEN
                   </a>
-                  <a href="#" className="text-sm font-medium">
-                    Latest
+                  <a href="#" className="text-lg font-medium">
+                    LATEST
                   </a>
-                  <a href="#" className="text-sm font-medium">
-                    About
+                  <a href="#" className="text-lg font-medium">
+                    ABOUT
                   </a>
-                  <a href="#" className="text-sm font-medium">
-                    Contact
+                  <a href="#" className="text-lg font-medium">
+                    CONTACT
                   </a>
-                  <a href="#" className="text-sm font-medium">
-                    Account
+                  <a href="#" className="text-lg font-medium">
+                    ACCOUNT
                   </a>
                 </nav>
               </SheetContent>
