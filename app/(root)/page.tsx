@@ -1,3 +1,4 @@
+import HeroSection from "@/components/home/hero-section";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 const HomePage = () => {
-  return <>HomePage</>;
+  return <><HeroSection /></>;
 };
 
 export default HomePage
