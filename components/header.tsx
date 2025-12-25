@@ -4,8 +4,8 @@ import { Menu } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="border-b text-white bg-black/40 backdrop-blur-lg ">
-      <div className="mx-auto max-w-7xl px-4">
+    <header className="border-b h-20 bg-black/10 backdrop-blur-lg">
+      <div className="p-2 mx-2">
         <div className="flex h-16 items-center justify-between">
           {/* LEFT MENU*/}
           <nav className="hidden md:flex gap-6">
@@ -21,8 +21,8 @@ const Header = () => {
           </nav>
 
           {/* Logo */}
-          <h1 className="text-3xl font-bold md:absolute md:left-1/2 md:-translate-x-1/2">
-            WATCHME
+          <h1 className="text-3xl font-bold">
+            WATCH <span className="text-orange-500">ME</span>
           </h1>
 
           {/* RIGHT MENU */}
@@ -48,8 +48,8 @@ const Header = () => {
               </SheetTrigger>
 
               <SheetContent side="left">
-                <nav className="flex flex-col gap-4 mt-6">
-                  <a href="#" className="text-sm font-medium">
+                <nav className="flex flex-col gap-4 m-3">
+                  <a href="#" className="text-lg font-medium">
                     MEN
                   </a>
                   <a href="#" className="text-lg font-medium">
