@@ -1,6 +1,6 @@
 const HeroSection = () => {
   return (
-    <section className="relative w-full h-[500px] overflow-hidden md:h-[600px] lg:h-[700px]">
+    <section className="w-full h-full">
       <video
         autoPlay
         loop
@@ -12,8 +12,8 @@ const HeroSection = () => {
         Your browser does not support the video tag.
       </video>
 
-      <div className="absolute inset-0 flex justify-center items-center text-white text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg">
-        Hero Section
+      <div className="absolute inset-0 flex justify-center items-center w-110 m-3 text-white text-5xl font-serif">
+        Where Elegance Meets Timeless Precision
       </div>
     </section>
   );

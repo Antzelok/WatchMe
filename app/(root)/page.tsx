@@ -6,7 +6,11 @@ export const metadata: Metadata = {
 };
 
 const HomePage = () => {
-  return <><HeroSection /></>;
+  return (
+    <>
+      <HeroSection />
+    </>
+  );
 };
 
-export default HomePage
+export default HomePage;
