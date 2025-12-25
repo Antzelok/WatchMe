@@ -1,4 +1,25 @@
-import Header from "@/components/header";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import { APP_DESCRIPTION, APP_NAME } from "@/lib/constants";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: {
+    template: `%s | WatchMe`,
+    default: APP_NAME,
+  },
+  description: APP_DESCRIPTION,
+};
 
 export default function RootLayout({
   children,
@@ -6,9 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex h-screen flex-col">
-      <Header />
-      <main className="flex-1 wrapper">{children}</main>
-    </div>
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {children}
+      </body>
+    </html>
   );
 }
