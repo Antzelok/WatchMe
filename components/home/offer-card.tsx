@@ -37,7 +37,7 @@ const OfferCard = () => {
         {offers.map((offer, index) => (
           <Card
             key={index}
-            className="w-70 h-60 bg-black border-white text-center text-white hover:scale-105 transition-transform duration-300"
+            className="w-70 h-60 bg-black border-white text-center justify-center text-white hover:scale-105 transition-transform duration-300"
           >
             <CardHeader>
               <CardTitle className="text-xl">{offer.title}</CardTitle>
