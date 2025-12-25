@@ -25,26 +25,21 @@ const offers: Offer[] = [
 
 const OfferCard = () => {
   return (
-    <section className="w-full h-120 bg-black">
-      <div className="px-4">
-        <h2 className="text-4xl font-bold text-center text-white p-5">
-          Exclusive Perks
-        </h2>
-        <div className="flex items-center justify-center gap-8 p-5">
-          {offers.map((offer, index) => (
-            <Card
-              key={index}
-              className="w-full h-50 bg-black border-white text-center text-white hover:scale-105 transition-transform duration-300"
-            >
-              <CardHeader>
-                <CardTitle className="text-xl">{offer.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>{offer.description}</CardDescription>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+    <section className="bg-black items-center p-10">
+      <div className="flex justify-center gap-8">
+        {offers.map((offer, index) => (
+          <Card
+            key={index}
+            className="bg-black border-white text-center text-white hover:scale-105 transition-transform duration-300"
+          >
+            <CardHeader>
+              <CardTitle className="text-xl">{offer.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>{offer.description}</CardDescription>
+            </CardContent>
+          </Card>
+        ))}
       </div>
     </section>
   );
