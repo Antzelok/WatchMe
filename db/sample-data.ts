@@ -41,10 +41,7 @@ const sampleData = {
       category: "Men",
       description:
         "Luxury automatic watch with sapphire crystal and stainless steel case.",
-      images: [
-        "/images/watches/chronos-elite-1.jpg",
-        "/images/watches/chronos-elite-2.jpg",
-      ],
+      images: ["/images/chronos.png"],
       price: 2499,
       brand: "Chronos",
       stock: 6,
@@ -55,10 +52,7 @@ const sampleData = {
       category: "Men",
       description:
         "Timeless gold-plated watch crafted for modern sophistication.",
-      images: [
-        "/images/watches/aurum-classic-1.jpg",
-        "/images/watches/aurum-classic-2.jpg",
-      ],
+      images: ["/images/aurum.png"],
       price: 1899,
       brand: "Aurum",
       stock: 4,
@@ -68,10 +62,7 @@ const sampleData = {
       slug: "noir-steel-minimal",
       category: "Men",
       description: "Minimal black steel watch with Swiss quartz movement.",
-      images: [
-        "/images/watches/noir-steel-1.jpg",
-        "/images/watches/noir-steel-2.jpg",
-      ],
+      images: ["/images/noir.png"],
       price: 1299,
       brand: "Noir",
       stock: 10,
@@ -82,10 +73,7 @@ const sampleData = {
       category: "Women",
       description:
         "Elegant rose gold watch designed for refined feminine style.",
-      images: [
-        "/images/watches/luna-rose-1.jpg",
-        "/images/watches/luna-rose-2.jpg",
-      ],
+      images: ["/images/luna.png"],
       price: 1599,
       brand: "Luna",
       stock: 5,
@@ -95,10 +83,7 @@ const sampleData = {
       slug: "etoile-pearl-edition",
       category: "Women",
       description: "Luxury pearl dial watch inspired by Parisian elegance.",
-      images: [
-        "/images/watches/etoile-pearl-1.jpg",
-        "/images/watches/etoile-pearl-2.jpg",
-      ],
+      images: ["/images/etoile.png"],
       price: 1799,
       brand: "Étoile",
       stock: 3,
@@ -109,10 +94,7 @@ const sampleData = {
       category: "Women",
       description:
         "Slim silver watch with diamond-cut detailing for everyday luxury.",
-      images: [
-        "/images/watches/serena-silver-1.jpg",
-        "/images/watches/serena-silver-2.jpg",
-      ],
+      images: ["/images/serena.png"],
       price: 1399,
       brand: "Serena",
       stock: 9,
