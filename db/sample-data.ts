@@ -47,11 +47,7 @@ const sampleData = {
       ],
       price: 2499,
       brand: "Chronos",
-      rating: 4.8,
-      numReviews: 14,
       stock: 6,
-      isFeatured: true,
-      banner: "/images/banners/chronos.jpg",
     },
     {
       name: "Aurum Classic Gold",
