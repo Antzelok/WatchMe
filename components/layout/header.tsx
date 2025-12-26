@@ -1,6 +1,7 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -9,22 +10,23 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           {/* LEFT MENU*/}
           <nav className="hidden md:flex gap-6">
-            <a href="#" className="text-lg hover:text-orange-500">
+            <Link href="/men" className="text-lg hover:text-orange-500">
               MEN
-            </a>
-            <a href="#" className="text-lg hover:text-orange-500">
+            </Link>
+            <Link href="/women" className="text-lg hover:text-orange-500">
               WOMEN
-            </a>
+            </Link>
             <a href="#" className="text-lg hover:text-orange-500">
               LATEST
             </a>
           </nav>
 
           {/* Logo */}
-          <h1 className="text-3xl font-bold">
-            WATCH <span className="text-orange-500">ME</span>
-          </h1>
-
+          <Link href="/">
+            <h1 className="text-3xl font-bold">
+              WATCH <span className="text-orange-500">ME</span>
+            </h1>
+          </Link>
           {/* RIGHT MENU */}
           <nav className="hidden md:flex gap-6">
             <a href="#" className="text-lg font-medium hover:text-orange-500">
