@@ -59,13 +59,13 @@ const Header = () => {
               >
                 <nav className="flex flex-col gap-4 m-5">
                   <Link
-                    href="#"
+                    href="/men"
                     className="text-lg font-medium hover:text-orange-500"
                   >
                     MEN
                   </Link>
                   <Link
-                    href="#"
+                    href="/women"
                     className="text-lg font-medium hover:text-orange-500"
                   >
                     WOMEN
