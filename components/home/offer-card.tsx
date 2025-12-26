@@ -32,8 +32,8 @@ const offers: Offer[] = [
 ];
 const OfferCard = () => {
   return (
-    <section className="bg-black items-center p-10">
-      <div className="flex justify-center items-center gap-8 flex-wrap">
+    <section className="bg-black items-center p-10 border-none">
+      <div className="flex justify-center items-center gap-8 flex-wrap border-none">
         {offers.map((offer, index) => (
           <Card
             key={index}
