@@ -1,86 +1,15 @@
-import { Pool, neonConfig } from "@neondatabase/serverless";
 import { PrismaNeon } from "@prisma/adapter-neon";
-import { PrismaClient } from "@prisma/client";
+import { Pool, neonConfig } from "@neondatabase/serverless";
 import ws from "ws";
 
-// Sets up WebSocket connections, which enables Neon to use WebSocket communication.
+// Enable WebSocket support
 neonConfig.webSocketConstructor = ws;
-const connectionString = `${process.env.DATABASE_URL}`;
 
-// Creates a new connection pool using the provided connection string, allowing multiple concurrent connections.
-const pool = new Pool({ connectionString });
+// Ensure DATABASE_URL exists
+if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is not set");
 
-// Instantiates the Prisma adapter using the Neon connection pool to handle the connection between Prisma and Neon.
-const adapter = new PrismaNeon(pool);
+// Create Neon pool
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
-// Extends the PrismaClient with a custom result transformer to convert the price and rating fields to strings.
-export const prisma = new PrismaClient({ adapter }).$extends({
-  result: {
-    product: {
-      price: {
-        compute(product) {
-          return product.price.toString();
-        },
-      },
-    },
-    cart: {
-      itemsPrice: {
-        needs: { itemsPrice: true },
-        compute(cart) {
-          return cart.itemsPrice.toString();
-        },
-      },
-      shippingPrice: {
-        needs: { shippingPrice: true },
-        compute(cart) {
-          return cart.shippingPrice.toString();
-        },
-      },
-      taxPrice: {
-        needs: { taxPrice: true },
-        compute(cart) {
-          return cart.taxPrice.toString();
-        },
-      },
-      totalPrice: {
-        needs: { totalPrice: true },
-        compute(cart) {
-          return cart.totalPrice.toString();
-        },
-      },
-    },
-    order: {
-      itemsPrice: {
-        needs: { itemsPrice: true },
-        compute(cart) {
-          return cart.itemsPrice.toString();
-        },
-      },
-      shippingPrice: {
-        needs: { shippingPrice: true },
-        compute(cart) {
-          return cart.shippingPrice.toString();
-        },
-      },
-      taxPrice: {
-        needs: { taxPrice: true },
-        compute(cart) {
-          return cart.taxPrice.toString();
-        },
-      },
-      totalPrice: {
-        needs: { totalPrice: true },
-        compute(cart) {
-          return cart.totalPrice.toString();
-        },
-      },
-    },
-    orderItem: {
-      price: {
-        compute(cart) {
-          return cart.price.toString();
-        },
-      },
-    },
-  },
-});
+// Use PrismaNeon directly
+export const prisma = new PrismaNeon(pool);
