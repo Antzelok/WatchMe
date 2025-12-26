@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const MenPage = () => {
   return (
-    <div className="flex flex-wrap gap-5 m-3 mt-30 bg-black">
+    <div className="flex flex-wrap items-center gap-5 m-3 mt-30 bg-black">
       {sampleData.products.slice(0, 6).map((product) => (
         <ProductCard key={product.slug} product={product} />
       ))}
