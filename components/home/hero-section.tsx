@@ -1,6 +1,6 @@
 const HeroSection = () => {
   return (
-    <section className="w-full h-screen">
+    <section className="w-full h-150">
       <video
         autoPlay
         loop
