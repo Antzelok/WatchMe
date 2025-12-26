@@ -44,7 +44,11 @@ const Header = () => {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-orange-500 hover:bg-black"
+                >
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
@@ -53,19 +57,19 @@ const Header = () => {
                 className="bg-black/50 backdrop-blur-lg text-white"
                 side="right"
               >
-                <nav className="flex flex-col gap-4 m-3">
-                  <a
+                <nav className="flex flex-col gap-4 m-5">
+                  <Link
                     href="#"
                     className="text-lg font-medium hover:text-orange-500"
                   >
                     MEN
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="#"
                     className="text-lg font-medium hover:text-orange-500"
                   >
                     WOMEN
-                  </a>
+                  </Link>
                   <a
                     href="#"
                     className="text-lg font-medium hover:text-orange-500"
