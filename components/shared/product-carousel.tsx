@@ -4,21 +4,21 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Product } from "@/types";
 import Autoplay from "embla-carousel-autoplay";
-import Link from "next/link";
 import Image from "next/image";
 
-const ProductCarousel = ({ data }: { data: Product[] }) => {
+const carouselImages = [
+  "/carousel/watchcarousel1.png",
+  "/carousel/watchcarousel2.png",
+  "/carousel/watchcarousel13.png",
+];
+
+const ProductCarousel = () => {
   return (
     <Carousel
-      className="mb-12 flex items-center justify-center w-full"
-      opts={{
-        loop: true,
-      }}
+      className="m-10"
+      opts={{ loop: true }}
       plugins={[
         Autoplay({
           delay: 5000,
@@ -28,29 +28,20 @@ const ProductCarousel = ({ data }: { data: Product[] }) => {
       ]}
     >
       <CarouselContent>
-        {data.map((product: Product) => (
-          <CarouselItem key={product.name}>
-            <Link href={`/product/${product.slug}`}>
-              <div className="relative mx-auto">
-                <Image
-                  src={product.images[0]}
-                  alt={product.name}
-                  width="768"
-                  height="768"
-                  className="object-fit"
-                />
-                <div className="absolute inset-0 flex items-end justify-center">
-                  <h2 className="bg-gray-900 bg-opacity-50 text-2xl font-bold px-2 text-white">
-                    {product.name}
-                  </h2>
-                </div>
-              </div>
-            </Link>
+        {carouselImages.map((src, index) => (
+          <CarouselItem key={index}>
+            <div className="flex items-center justify-center">
+              <Image
+                src={src}
+                alt={`Carousel image ${index + 1}`}
+                width={1000}
+                height={400}
+                className="rounded-lg"
+              />
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel>
   );
 };
