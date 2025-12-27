@@ -76,12 +76,12 @@ const Header = () => {
                   >
                     LATEST
                   </a>
-                  <a
-                    href="#"
+                  <Link
+                    href="/cart"
                     className="text-lg font-medium hover:text-orange-500"
                   >
-                    ABOUT
-                  </a>
+                    CART
+                  </Link>
                   <a
                     href="#"
                     className="text-lg font-medium hover:text-orange-500"
