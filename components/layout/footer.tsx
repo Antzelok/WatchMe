@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Instagram, Twitter, Facebook } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const Footer = () => {
   return (
-    <footer className="bg-black  text-white border-none">
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
+    <footer className="bg-black text-white">
+      <div className="px-6 py-10 grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-6">
         {/* BRAND */}
         <div className="space-y-4">
           <Link href="/">
@@ -18,24 +20,27 @@ const Footer = () => {
           </p>
 
           <div className="flex gap-4 mt-2">
-            <Link
-              href="#"
-              className="p-2 rounded-full bg-white/10 hover:bg-orange-500 transition-colors text-white"
+            <Button
+              variant="ghost"
+              size="icon"
+              className="bg-white/10 hover:bg-orange-500 text-white"
             >
               <Instagram className="h-5 w-5" />
-            </Link>
-            <Link
-              href="#"
-              className="p-2 rounded-full bg-white/10 hover:bg-orange-500 transition-colors text-white"
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="bg-white/10 hover:bg-orange-500 text-white"
             >
               <Twitter className="h-5 w-5" />
-            </Link>
-            <Link
-              href="#"
-              className="p-2 rounded-full bg-white/10 hover:bg-orange-500 transition-colors text-white"
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="bg-white/10 hover:bg-orange-500 text-white"
             >
               <Facebook className="h-5 w-5" />
-            </Link>
+            </Button>
           </div>
         </div>
 
@@ -130,23 +135,23 @@ const Footer = () => {
             Get exclusive updates and offers.
           </p>
           <form className="flex w-full gap-2">
-            <input
+            <Input
               type="email"
               placeholder="Your email"
-              className="flex-1 px-4 py-2 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="flex-1 bg-white/10 text-white placeholder-white/50"
             />
-            <button
+            <Button
               type="submit"
-              className="px-4 py-2 rounded-lg bg-orange-500 text-black font-semibold hover:bg-orange-600 transition"
+              className="bg-orange-500 text-black hover:bg-orange-600"
             >
               Subscribe
-            </button>
+            </Button>
           </form>
         </div>
       </div>
 
       {/* BOTTOM COPYRIGHT */}
-      <div className="border-t border-white/10 mt-12 py-6 text-center text-xs text-white/50">
+      <div className="mt-12 py-6 text-center text-xs text-white/50">
         &copy; {new Date().getFullYear()} WATCHME. All rights reserved.
       </div>
     </footer>
