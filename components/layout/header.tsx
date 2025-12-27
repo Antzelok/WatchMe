@@ -29,9 +29,12 @@ const Header = () => {
           </Link>
           {/* RIGHT MENU */}
           <nav className="hidden md:flex gap-6">
-            <a href="#" className="text-lg font-medium hover:text-orange-500">
-              ABOUT
-            </a>
+            <Link
+              href="/cart"
+              className="text-lg font-medium hover:text-orange-500"
+            >
+              CART
+            </Link>
             <a href="#" className="text-lg font-medium hover:text-orange-500">
               CONTACT
             </a>
