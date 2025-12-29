@@ -19,11 +19,11 @@ const SignUpForm = () => {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/";
 
-  const SignUpButton = () => {
+  const SubmitButton = () => {
     const { pending } = useFormStatus();
 
     return (
-      <Button disabled={pending} className="w-full" variant="default">
+      <Button disabled={pending} className="w-full">
         {pending ? "Submitting..." : "Sign Up"}
       </Button>
     );
@@ -32,18 +32,18 @@ const SignUpForm = () => {
   return (
     <form action={action}>
       <input type="hidden" name="callbackUrl" value={callbackUrl} />
+
       <div className="space-y-6">
         <div>
-          <Label htmlFor="email">Name</Label>
+          <Label htmlFor="name">Name</Label>
           <Input
             id="name"
             name="name"
-            type="text"
             required
-            autoComplete="name"
-            defaultValue={SignUpDefaultValues.email}
+            defaultValue={SignUpDefaultValues.name}
           />
         </div>
+
         <div>
           <Label htmlFor="email">Email</Label>
           <Input
@@ -51,10 +51,10 @@ const SignUpForm = () => {
             name="email"
             type="email"
             required
-            autoComplete="email"
             defaultValue={SignUpDefaultValues.email}
           />
         </div>
+
         <div>
           <Label htmlFor="password">Password</Label>
           <Input
@@ -62,35 +62,33 @@ const SignUpForm = () => {
             name="password"
             type="password"
             required
-            autoComplete="password"
             defaultValue={SignUpDefaultValues.password}
           />
         </div>
+
         <div>
-          <Label htmlFor="password">Confirm Password</Label>
+          <Label htmlFor="confirmPassword">Confirm Password</Label>
           <Input
             id="confirmPassword"
             name="confirmPassword"
             type="password"
             required
-            autoComplete="confirmPassword"
             defaultValue={SignUpDefaultValues.password}
           />
         </div>
-        <div>
-          <SignUpButton />
-        </div>
+
+        <SubmitButton />
 
         {data && !data.success && (
-          <div className="text-center text-destructive">{data.message} </div>
+          <p className="text-center text-destructive">{data.message}</p>
         )}
 
-        <div className="text-sm text-center text-muted-foreground">
+        <p className="text-sm text-center text-muted-foreground">
           Already have an account?{" "}
-          <Link href="/sign-up" target="_self" className="link">
-            Sign In
+          <Link href="/sign-in" className="link">
+            Sign in
           </Link>
-        </div>
+        </p>
       </div>
     </form>
   );

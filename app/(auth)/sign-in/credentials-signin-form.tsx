@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,12 +19,12 @@ const CredentialsSignInForm = () => {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/";
 
-  const SignInButton = () => {
+  const SubmitButton = () => {
     const { pending } = useFormStatus();
 
     return (
-      <Button disabled={pending} className="w-full" variant="default">
-        {pending ? "Signing In ..." : "Sign In"}
+      <Button disabled={pending} className="w-full">
+        {pending ? "Signing in..." : "Sign In"}
       </Button>
     );
   };
@@ -31,6 +32,7 @@ const CredentialsSignInForm = () => {
   return (
     <form action={action}>
       <input type="hidden" name="callbackUrl" value={callbackUrl} />
+
       <div className="space-y-6">
         <div>
           <Label htmlFor="email">Email</Label>
@@ -39,10 +41,10 @@ const CredentialsSignInForm = () => {
             name="email"
             type="email"
             required
-            autoComplete="email"
             defaultValue={SignInDefaultValues.email}
           />
         </div>
+
         <div>
           <Label htmlFor="password">Password</Label>
           <Input
@@ -50,24 +52,22 @@ const CredentialsSignInForm = () => {
             name="password"
             type="password"
             required
-            autoComplete="password"
             defaultValue={SignInDefaultValues.password}
           />
         </div>
-        <div>
-          <SignInButton />
-        </div>
+
+        <SubmitButton />
 
         {data && !data.success && (
-          <div className="text-center text-destructive">{data.message} </div>
+          <p className="text-center text-destructive">{data.message}</p>
         )}
 
-        <div className="text-sm text-center text-muted-foreground">
+        <p className="text-sm text-center text-muted-foreground">
           Don&apos;t have an account?{" "}
-          <Link href="/sign-up" target="_self" className="link">
+          <Link href="/sign-up" className="link">
             Sign up
           </Link>
-        </div>
+        </p>
       </div>
     </form>
   );

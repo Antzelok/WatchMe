@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import {
   Card,
   CardContent,
@@ -13,23 +14,21 @@ import CredentialsSignInForm from "./credentials-signin-form";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: `Sign In`,
+  title: "Sign In",
 };
 
-const SignInPage = async (props: {
-  searchParams: Promise<{
-    callbackUrl: string;
-  }>;
+const SignInPage = async ({
+  searchParams,
+}: {
+  searchParams: { callbackUrl?: string };
 }) => {
-  const { callbackUrl } = await props.searchParams;
-
   const session = await auth();
 
   if (session) {
-    return redirect(callbackUrl || "/");
+    redirect(searchParams.callbackUrl || "/");
   }
 
   return (
@@ -42,16 +41,20 @@ const SignInPage = async (props: {
               height={100}
               width={100}
               alt={`${APP_NAME} logo`}
-              priority={true}
+              priority
             />
           </Link>
+
           <CardTitle className="text-center">Sign In</CardTitle>
           <CardDescription className="text-center">
-            Sign In To Your Account
+            Sign in to your account
           </CardDescription>
         </CardHeader>
+
         <CardContent className="space-y-4">
-          <CredentialsSignInForm />
+          <Suspense fallback={<div>Loading form...</div>}>
+            <CredentialsSignInForm />
+          </Suspense>
         </CardContent>
       </Card>
     </div>

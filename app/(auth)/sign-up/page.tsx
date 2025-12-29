@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import {
   Card,
   CardContent,
@@ -13,23 +14,21 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import SignUpForm from "./sign-up-form";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: `Sign Up`,
+  title: "Sign Up",
 };
 
-const SignUpPage = async (props: {
-  searchParams: Promise<{
-    callbackUrl: string;
-  }>;
+const SignUpPage = async ({
+  searchParams,
+}: {
+  searchParams: { callbackUrl?: string };
 }) => {
-  const { callbackUrl } = await props.searchParams;
-
   const session = await auth();
 
   if (session) {
-    return redirect(callbackUrl || "/");
+    redirect(searchParams.callbackUrl || "/");
   }
 
   return (
@@ -42,16 +41,20 @@ const SignUpPage = async (props: {
               height={100}
               width={100}
               alt={`${APP_NAME} logo`}
-              priority={true}
+              priority
             />
           </Link>
+
           <CardTitle className="text-center">Create Account</CardTitle>
           <CardDescription className="text-center">
-            Enter Your Information Below to Sign Up
+            Enter your details below
           </CardDescription>
         </CardHeader>
+
         <CardContent className="space-y-4">
-          <SignUpForm />
+          <Suspense fallback={<div>Loading form...</div>}>
+            <SignUpForm />
+          </Suspense>
         </CardContent>
       </Card>
     </div>
