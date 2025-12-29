@@ -36,6 +36,7 @@ const sampleData = {
 
   products: [
     {
+      id: "1",
       name: "Chronos Elite Automatic",
       slug: "chronos-elite-automatic",
       category: "Men",
@@ -47,6 +48,7 @@ const sampleData = {
       stock: 6,
     },
     {
+      id: "2",
       name: "Aurum Classic Gold",
       slug: "aurum-classic-gold",
       category: "Men",
@@ -58,6 +60,7 @@ const sampleData = {
       stock: 4,
     },
     {
+      id: "3",
       name: "Noir Steel Minimal",
       slug: "noir-steel-minimal",
       category: "Men",
@@ -68,6 +71,7 @@ const sampleData = {
       stock: 10,
     },
     {
+      id: "4",
       name: "Luna Rose Gold",
       slug: "luna-rose-gold",
       category: "Women",
@@ -79,6 +83,7 @@ const sampleData = {
       stock: 5,
     },
     {
+      id: "5",
       name: "Étoile Pearl Edition",
       slug: "etoile-pearl-edition",
       category: "Women",
@@ -89,6 +94,7 @@ const sampleData = {
       stock: 3,
     },
     {
+      id: "6",
       name: "Serena Silver Slim",
       slug: "serena-silver-slim",
       category: "Women",
