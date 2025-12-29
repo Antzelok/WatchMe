@@ -13,6 +13,8 @@ import CredentialsSignInForm from "./credentials-signin-form";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: `Sign In`,
 };
@@ -45,7 +47,7 @@ const SignInPage = async (props: {
           </Link>
           <CardTitle className="text-center">Sign In</CardTitle>
           <CardDescription className="text-center">
-            Sing In To Your Account
+            Sign In To Your Account
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

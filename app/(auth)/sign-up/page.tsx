@@ -13,6 +13,8 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import SignUpForm from "./sign-up-form";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: `Sign Up`,
 };
