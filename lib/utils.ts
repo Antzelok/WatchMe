@@ -20,26 +20,31 @@ export function formatNumberWithDecimal(num: number): string {
 // Format errors
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function formatError(error: any) {
-  if (error.name === "ZodError") {
-    // Handle Zod error
-    const fieldErrors = Object.keys(error.errors).map(
-      (field) => error.errors[field].message
-    );
-
-    return fieldErrors.join(". ");
-  } else if (
-    error.name === "PrismaClientKnownRequestError" &&
-    error.code === "P2002"
-  ) {
-    // Handle Prisma error
-    const field = error.meta?.target ? error.meta.target[0] : "Field";
-    return `${field.charAt(0).toUppercase() + field.slice(1)} Already Exists`;
-  } else {
-    // Handle other errors
-    return typeof error.message === "string"
-      ? error.message
-      : JSON.stringify(error.message);
+  // Zod validation errors
+  if (error?.name === "ZodError" && Array.isArray(error.errors)) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return error.errors.map((e: any) => e.message).join(". ");
   }
+
+  // Prisma unique constraint
+  if (
+    error?.name === "PrismaClientKnownRequestError" &&
+    error?.code === "P2002"
+  ) {
+    const field = Array.isArray(error.meta?.target)
+      ? error.meta.target[0]
+      : "Field";
+
+    return `${field.charAt(0).toUpperCase()}${field.slice(1)} already exists`;
+  }
+
+  // Normal JS errors
+  if (typeof error?.message === "string") {
+    return error.message;
+  }
+
+  // Fallback (never crash)
+  return "Something went wrong";
 }
 
 // Round number to 2 decimal places

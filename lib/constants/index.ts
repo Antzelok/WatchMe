@@ -8,3 +8,17 @@ export const SERVER_URL =
 export const PAYMENT_METHODS = process.env.PAYMENT_METHODS
   ? process.env.PAYMENT_METHODS.split(",")
   : ["Stripe", "Cash On Delivery"];
+
+export const SignInDefaultValues = {
+  email: "",
+  password: "",
+};
+
+export const SignUpDefaultValues = {
+  name: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
+export const PAGE_SIZE = Number(process.env.PAGE_SIZE || 12);

@@ -9,7 +9,9 @@ import {
   paymentResultSchema,
 } from "@/lib/validators";
 
-export type Product = z.infer<typeof insertProductSchema>;
+export type Product = z.infer<typeof insertProductSchema> & {
+  id: string
+};
 
 export type Cart = z.infer<typeof insertCartSchema>;
 
