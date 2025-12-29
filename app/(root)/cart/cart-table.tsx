@@ -133,7 +133,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                 ) : (
                   <ArrowRight className="w-4 h-4 " />
                 )}{" "}
-                Proceed To Checkout
+                Proceed to Checkout
               </Button>
             </CardContent>
           </Card>
