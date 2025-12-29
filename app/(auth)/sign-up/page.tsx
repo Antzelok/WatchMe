@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { Suspense } from "react";
 import {
   Card,
   CardContent,
@@ -13,8 +12,6 @@ import { APP_NAME } from "@/lib/constants";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import SignUpForm from "./sign-up-form";
-
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Sign Up",
@@ -52,9 +49,7 @@ const SignUpPage = async ({
         </CardHeader>
 
         <CardContent className="space-y-4">
-          <Suspense fallback={<div>Loading form...</div>}>
-            <SignUpForm />
-          </Suspense>
+          <SignUpForm />
         </CardContent>
       </Card>
     </div>
