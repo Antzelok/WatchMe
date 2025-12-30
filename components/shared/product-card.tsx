@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Product } from "@/types";
 import { AddItemToCart } from "@/lib/actions/cart.actions";
-import { toast } from "sonner";
+import toast from "react-hot-toast";
 import { useTransition } from "react";
 
 const ProductCard = ({ product }: { product: Product }) => {
