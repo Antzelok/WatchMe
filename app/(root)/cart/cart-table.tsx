@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import toast from "react-hot-toast";
 import { useTransition } from "react";
 import { AddItemToCart, RemoveItemFromCart } from "@/lib/actions/cart.actions";
 import { ArrowRight, Loader, Minus, Plus } from "lucide-react";
@@ -26,19 +26,20 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
 
   return (
     <>
-      <h1 className="py-4 h2-bold">Shopping Cart</h1>
+      <h1 className="py-4 h2-boldtext-lg text-white">Shopping Cart</h1>
       {!cart || cart.items.length === 0 ? (
         <div>
           Cart Is Empty <Link href="/">Go Shopping</Link>
         </div>
       ) : (
-        <div className="grid md:grid-cols-4 md:gap-5">
+        <div className="grid md:grid-cols-4 md:gap-5 my-30 text-white">
           <div className="overflow-x-auto md:col-span-3">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="text-center">Quantity</TableHead>
-                  <TableHead className="text-right">Price</TableHead>
+                  <TableHead className="text-white text-lg font-bold">
+                    Your Cart
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -52,16 +53,17 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                         <Image
                           src={item.image}
                           alt={item.name}
-                          height={50}
-                          width={50}
+                          height={100}
+                          width={100}
                         />
                         <span className="px-2">{item.name}</span>
                       </Link>
                     </TableCell>
                     <TableCell className="flex-center gap-2">
                       <Button
+                        className="m-2 hover:bg-orange-500"
                         disabled={isPending}
-                        variant="outline"
+                        variant="ghost"
                         type="button"
                         onClick={() =>
                           startTransition(async () => {
@@ -80,13 +82,14 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                         {isPending ? (
                           <Loader className="w-4 h-4 animate-spin" />
                         ) : (
-                          <Minus className="w-4 h-4" />
+                          <Minus className="w-5 h-5" />
                         )}
                       </Button>
                       <span>{item.qty}</span>
                       <Button
+                        className="m-5 hover:bg-orange-500"
                         disabled={isPending}
-                        variant="outline"
+                        variant="ghost"
                         type="button"
                         onClick={() =>
                           startTransition(async () => {
@@ -113,7 +116,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
               </TableBody>
             </Table>
           </div>
-          <Card>
+          <Card className="bg-black text-white justify-center">
             <CardContent className="p-4 gap-4">
               <div className="pb-4 text-xl">
                 Subtotal {cart.items.reduce((a, c) => a + c.qty, 0)}):
@@ -122,7 +125,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                 </span>
               </div>
               <Button
-                className="w-full"
+                className="w-full bg-orange-500 text-black"
                 disabled={isPending}
                 onClick={() =>
                   startTransition(() => router.push("/shipping-address"))
@@ -131,7 +134,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                 {isPending ? (
                   <Loader className="w-4 h-4 animate-spin" />
                 ) : (
-                  <ArrowRight className="w-4 h-4 " />
+                  <ArrowRight className="w-4 h-4" />
                 )}{" "}
                 Proceed to Checkout
               </Button>
