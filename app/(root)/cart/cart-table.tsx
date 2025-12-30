@@ -1,4 +1,5 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useTransition } from "react";
@@ -26,14 +27,13 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
 
   return (
     <>
-      <h1 className="py-4 h2-boldtext-lg text-white">Shopping Cart</h1>
       {!cart || cart.items.length === 0 ? (
-        <div>
+        <div className="mt-15 text-white">
           Cart Is Empty <Link href="/">Go Shopping</Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5 my-30 text-white">
-          <div className="overflow-x-auto md:col-span-3">
+          <div className="overflow-x-auto md:col-span-3 m-2">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -116,7 +116,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
               </TableBody>
             </Table>
           </div>
-          <Card className="bg-black text-white justify-center">
+          <Card className="bg-black text-white justify-center m-2">
             <CardContent className="p-4 gap-4">
               <div className="pb-4 text-xl">
                 Subtotal {cart.items.reduce((a, c) => a + c.qty, 0)}):
