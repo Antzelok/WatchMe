@@ -1,16 +1,18 @@
-import ProductCard from "@/components/shared/product-card";
-import sampleData from "@/db/sample-data";
 import { Metadata } from "next";
+import ProductCard from "@/components/shared/product-card";
+import { getAllProducts } from "@/lib/actions/product.actions";
 
 export const metadata: Metadata = {
   title: "Men",
 };
 
-const MenPage = () => {
+const MenPage = async () => {
+  const products = await getAllProducts();
+
   return (
     <div className="flex flex-wrap items-center justify-center gap-5 m-3 mt-30 bg-black">
-      {sampleData.products.slice(0, 6).map((product) => (
-        <ProductCard key={product.slug} product={product} />
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );
