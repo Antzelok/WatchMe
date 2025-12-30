@@ -28,7 +28,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
   return (
     <>
       {!cart || cart.items.length === 0 ? (
-        <div className="mt-15 text-white">
+        <div className="mt-20 my-10 text-white">
           Cart Is Empty <Link href="/">Go Shopping</Link>
         </div>
       ) : (
