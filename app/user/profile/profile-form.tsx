@@ -48,7 +48,7 @@ const ProfileForm = () => {
 
     await update(newSession);
 
-    toast.success("Profile updated successfully");
+    toast.success(res.message);
     router.push("/");
   };
 
