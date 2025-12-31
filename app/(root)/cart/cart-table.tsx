@@ -1,10 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 import { useTransition } from "react";
-import { AddItemToCart, RemoveItemFromCart } from "@/lib/actions/cart.actions";
-import { ArrowRight, Loader, Minus, Plus } from "lucide-react";
 import { Cart } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,12 +13,14 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { formatCurrency } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/utils";
+import { ArrowRight, Loader } from "lucide-react";
+import { useRouter } from "next/navigation";
+import AddToCart from "@/components/shared/product/add-to-cart";
 
 const CartTable = ({ cart }: { cart?: Cart }) => {
   const router = useRouter();
-
   const [isPending, startTransition] = useTransition();
 
   return (
@@ -59,56 +57,8 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                         <span className="px-2">{item.name}</span>
                       </Link>
                     </TableCell>
-                    <TableCell className="flex-center gap-2">
-                      <Button
-                        className="m-2 hover:bg-orange-500"
-                        disabled={isPending}
-                        variant="ghost"
-                        type="button"
-                        onClick={() =>
-                          startTransition(async () => {
-                            const res = await RemoveItemFromCart(
-                              item.productId
-                            );
-
-                            if (!res.success) {
-                              toast.error(res.message);
-                            } else {
-                              toast.success(res.message);
-                            }
-                          })
-                        }
-                      >
-                        {isPending ? (
-                          <Loader className="w-4 h-4 animate-spin" />
-                        ) : (
-                          <Minus className="w-5 h-5" />
-                        )}
-                      </Button>
-                      <span>{item.qty}</span>
-                      <Button
-                        className="m-5 hover:bg-orange-500"
-                        disabled={isPending}
-                        variant="ghost"
-                        type="button"
-                        onClick={() =>
-                          startTransition(async () => {
-                            const res = await AddItemToCart(item);
-
-                            if (!res.success) {
-                              toast.error(res.message);
-                            } else {
-                              toast.success(res.message);
-                            }
-                          })
-                        }
-                      >
-                        {isPending ? (
-                          <Loader className="w-4 h-4 animate-spin" />
-                        ) : (
-                          <Plus className="w-4 h-4" />
-                        )}
-                      </Button>
+                    <TableCell>
+                      <AddToCart cart={cart} item={item} />
                     </TableCell>
                     <TableCell className="text-right">${item.price}</TableCell>
                   </TableRow>
@@ -116,11 +66,12 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
               </TableBody>
             </Table>
           </div>
+
           <Card className="bg-black text-white justify-center m-2">
             <CardContent className="p-4 gap-4">
               <div className="pb-4 text-xl">
-                Subtotal {cart.items.reduce((a, c) => a + c.qty, 0)}):
-                <span className="span font-bold">
+                Subtotal ({cart.items.reduce((a, c) => a + c.qty, 0)}):
+                <span className="font-bold">
                   {formatCurrency(cart.itemsPrice)}
                 </span>
               </div>
