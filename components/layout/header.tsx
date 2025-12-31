@@ -2,8 +2,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import { auth } from "@/auth";
 
-const Header = () => {
+const Header = async () => {
+  const session = await auth();
+
   return (
     <header className="fixed w-full z-50 h-20 text-white bg-black/10 backdrop-blur-lg">
       <div className="p-2 mx-2">
@@ -38,9 +41,22 @@ const Header = () => {
             <a href="#" className="text-lg font-medium hover:text-orange-500">
               CONTACT
             </a>
-            <a href="#" className="text-lg font-medium hover:text-orange-500">
-              ACCOUNT
-            </a>
+
+            {session?.user?.role === "admin" ? (
+              <Link
+                href="/admin"
+                className="text-lg font-medium hover:text-orange-500"
+              >
+                ADMIN
+              </Link>
+            ) : (
+              <Link
+                href="/user"
+                className="text-lg font-medium hover:text-orange-500"
+              >
+                ACCOUNT
+              </Link>
+            )}
           </nav>
 
           {/* MOBILE MENU */}
@@ -91,12 +107,21 @@ const Header = () => {
                   >
                     CONTACT
                   </a>
-                  <a
-                    href="#"
-                    className="text-lg font-medium hover:text-orange-500"
-                  >
-                    ACCOUNT
-                  </a>
+                  {session?.user?.role === "admin" ? (
+                    <Link
+                      href="/admin"
+                      className="text-lg font-medium hover:text-orange-500"
+                    >
+                      ADMIN
+                    </Link>
+                  ) : (
+                    <Link
+                      href="/user"
+                      className="text-lg font-medium hover:text-orange-500"
+                    >
+                      ACCOUNT
+                    </Link>
+                  )}
                 </nav>
               </SheetContent>
             </Sheet>
