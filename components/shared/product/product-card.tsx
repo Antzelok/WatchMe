@@ -3,45 +3,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Product } from "@/types";
-import { AddItemToCart } from "@/lib/actions/cart.actions";
-import toast from "react-hot-toast";
-import { useTransition } from "react";
+import { Product, Cart } from "@/types";
+import AddToCart from "@/components/shared/product/add-to-cart";
 
-const ProductCard = ({ product }: { product: Product }) => {
-  const [isPending, startTransition] = useTransition();
-
-  const handleAddToCart = () => {
-    startTransition(async () => {
-      const res = await AddItemToCart({
-        productId: product.id,
-        name: product.name,
-        slug: product.slug,
-        price: product.price,
-        image: product.images[0],
-        qty: 1,
-      });
-
-      if (!res.success) {
-        toast.error(res.message);
-        return;
-      }
-
-      toast.success(res.message);
-    });
-  };
-
+const ProductCard = ({ product, cart }: { product: Product; cart?: Cart }) => {
   return (
     <Card className="w-70 text-white bg-black border-none">
       <CardHeader className="p-0 items-center">
         <Link href={`/product/${product.slug}`}>
           <Image
-            src={product.images[0]}
+            src={product.images[0] || "/images/placeholder.png"}
             alt={product.name}
             height={300}
             width={300}
             priority
+            className="object-cover rounded"
           />
         </Link>
       </CardHeader>
@@ -55,17 +31,18 @@ const ProductCard = ({ product }: { product: Product }) => {
 
         <div className="flex items-center justify-between gap-4">
           {product.stock > 0 ? (
-            <>
-              <span className="font-semibold">${product.price}</span>
-
-              <Button
-                size="sm"
-                onClick={handleAddToCart}
-                disabled={isPending}
-              >
-                {isPending ? "Adding..." : "Add to Cart"}
-              </Button>
-            </>
+            <AddToCart
+              cart={cart}
+              item={{
+                productId: product.id,
+                name: product.name,
+                slug: product.slug,
+                price: product.price,
+                qty: 1,
+                image: product.images[0],
+              }}
+              className="bg-black text-white border border-gray-700"
+            />
           ) : (
             <p className="text-destructive text-sm">Out Of Stock</p>
           )}
