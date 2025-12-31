@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Product, Cart } from "@/types";
 import AddToCart from "@/components/shared/product/add-to-cart";
+import { formatNumberWithDecimal } from "@/lib/utils";
 
 const ProductCard = ({ product, cart }: { product: Product; cart?: Cart }) => {
   return (
@@ -28,6 +29,9 @@ const ProductCard = ({ product, cart }: { product: Product; cart?: Cart }) => {
         <Link href={`/product/${product.slug}`}>
           <h2 className="text-sm font-medium">{product.name}</h2>
         </Link>
+        <p className="text-sm font-bold text-white">
+          ${formatNumberWithDecimal(product.price)}
+        </p>
 
         <div className="flex items-center justify-between gap-4">
           {product.stock > 0 ? (
