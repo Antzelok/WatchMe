@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
+    "@hookform/resolvers": "^5.2.2",
     "@neondatabase/serverless": "^0.10.4",
     "@prisma/adapter-neon": "^5.22.0",
     "@prisma/client": "^6.4.1",
@@ -30,10 +31,12 @@
     "prisma": "^6.4.1",
     "react": "19.2.1",
     "react-dom": "19.2.1",
+    "react-hook-form": "^7.69.0",
     "react-hot-toast": "^2.6.0",
     "tailwind-merge": "^3.4.0",
     "tsx": "^4.21.0",
-    "ws": "^8.18.3"
+    "ws": "^8.18.3",
+    "zod": "^4.3.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
