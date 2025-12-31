@@ -41,7 +41,6 @@ const ProductCard = ({ product, cart }: { product: Product; cart?: Cart }) => {
                 qty: 1,
                 image: product.images[0],
               }}
-              className="bg-black text-white border border-gray-700"
             />
           ) : (
             <p className="text-destructive text-sm">Out Of Stock</p>

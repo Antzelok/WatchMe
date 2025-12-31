@@ -37,11 +37,8 @@ const ProductDetailsPage = async (props: {
           <p className="text-orange-500 font-semibold uppercase tracking-wide">
             {product.brand} • {product.category}
           </p>
-
           <h1 className="text-3xl md:text-4xl font-bold">{product.name}</h1>
-
           <p className="text-gray-300">{product.description}</p>
-
           <div className="flex items-center gap-4 mt-6">
             <Badge
               variant={product.stock > 0 ? "outline" : "destructive"}
@@ -57,7 +54,6 @@ const ProductDetailsPage = async (props: {
             </span>
           </div>
 
-          {/* Add To Cart logic */}
           {product.stock > 0 && (
             <AddToCart
               cart={cart}
@@ -98,7 +94,6 @@ const ProductDetailsPage = async (props: {
                 )}
               </div>
 
-              {/* Same Add To Cart logic */}
               {product.stock > 0 && (
                 <AddToCart
                   cart={cart}

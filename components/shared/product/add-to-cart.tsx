@@ -7,15 +7,7 @@ import { AddItemToCart, RemoveItemFromCart } from "@/lib/actions/cart.actions";
 import { Plus, Minus, Loader } from "lucide-react";
 import { useTransition } from "react";
 
-const AddToCart = ({
-  cart,
-  item,
-  className,
-}: {
-  cart?: Cart;
-  item: CartItem;
-  className?: string;
-}) => {
+const AddToCart = ({ cart, item }: { cart?: Cart; item: CartItem }) => {
   const [isPending, startTransition] = useTransition();
 
   const handleAddToCart = () => {
@@ -49,6 +41,7 @@ const AddToCart = ({
   return existItem ? (
     <div className="flex items-center gap-2">
       <Button
+        className="bg-black hover:bg-orange-500 hover:text-black"
         type="button"
         variant="outline"
         onClick={handleRemoveFromCart}
@@ -64,6 +57,7 @@ const AddToCart = ({
       <span className="min-w-[24px] text-center">{existItem.qty}</span>
 
       <Button
+        className="bg-black hover:bg-orange-500 hover:text-black"
         type="button"
         variant="outline"
         onClick={handleAddToCart}
@@ -78,7 +72,7 @@ const AddToCart = ({
     </div>
   ) : (
     <Button
-      className={`flex-center w-full p-3 ${className ?? "bg-orange-500"}`}
+      className="flex-center w-full p-3 bg-black text-white border border-gray-700"
       type="button"
       onClick={handleAddToCart}
       disabled={isPending}
