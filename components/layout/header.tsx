@@ -71,13 +71,21 @@ const Header = async () => {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:text-orange-500 hover:bg-black"
-                >
-                  <Menu className="h-6 w-6" />
-                </Button>
+                <div className="relative">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="hover:text-orange-500 hover:bg-black"
+                  >
+                    <Menu className="h-6 w-6" />
+                  </Button>
+
+                  {cartCount > 0 && (
+                    <span className="absolute -top-1-right-1 flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-black">
+                      {cartCount}
+                    </span>
+                  )}
+                </div>
               </SheetTrigger>
 
               <SheetContent
