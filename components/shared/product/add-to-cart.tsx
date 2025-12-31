@@ -50,11 +50,13 @@ const AddToCart = ({ cart, item }: { cart?: Cart; item: CartItem }) => {
         {isPending ? (
           <Loader className="h-4 w-4 animate-spin" />
         ) : (
-          <Minus className="h-4 w-4" />
+          <Minus className="h-4 w-4 text-white" />
         )}
       </Button>
 
-      <span className="min-w-[24px] text-center">{existItem.qty}</span>
+      <span className="min-w-[24px] text-center text-white">
+        {existItem.qty}
+      </span>
 
       <Button
         className="bg-black hover:bg-orange-500 hover:text-black"
@@ -66,7 +68,7 @@ const AddToCart = ({ cart, item }: { cart?: Cart; item: CartItem }) => {
         {isPending ? (
           <Loader className="h-4 w-4 animate-spin" />
         ) : (
-          <Plus className="h-4 w-4" />
+          <Plus className="h-4 w-4 text-white" />
         )}
       </Button>
     </div>

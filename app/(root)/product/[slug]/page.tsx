@@ -20,7 +20,7 @@ const ProductDetailsPage = async (props: {
 
   return (
     <section className="bg-black text-white mt-30 mx-10 mb-10">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
         {/* Product Images */}
         <div className="col-span-2 flex flex-col gap-4">
           <Image
@@ -49,7 +49,7 @@ const ProductDetailsPage = async (props: {
               {product.stock > 0 ? "In Stock" : "Out Of Stock"}
             </Badge>
 
-            <span className="text-2xl font-bold text-white">
+            <span className="text-2xl font-semiboldtext-white">
               ${product.price.toFixed(2)}
             </span>
           </div>
