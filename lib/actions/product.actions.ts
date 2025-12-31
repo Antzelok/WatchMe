@@ -5,11 +5,18 @@ import { revalidatePath } from "next/cache";
 import { insertProductSchema, updateProductSchema } from "../validators";
 import z from "zod";
 
-// Get single product by its slug
+// Get product by slug
 export async function getProductBySlug(slug: string) {
-  return await prisma.product.findFirst({
-    where: { slug: slug },
+  const product = await prisma.product.findFirst({
+    where: { slug },
   });
+
+  if (!product) return null;
+
+  return {
+    ...product,
+    price: Number(product.price), 
+  };
 }
 
 // Get single product by it's ID
