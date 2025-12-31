@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const WatchBrands = () => {
   return (
-    <div>
+    <div className="m-3">
       <Image
         src="/images/watchbrands.png"
         alt="Watch brands"
