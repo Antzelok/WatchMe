@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import ProductCard from "@/components/shared/product-card";
+import ProductCard from "@/components/shared/product/product-card";
 import { getAllProducts } from "@/lib/actions/product.actions";
 
 export const metadata: Metadata = {
