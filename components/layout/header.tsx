@@ -3,9 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { auth } from "@/auth";
+import { getCartItemsCount } from "@/lib/actions/cart.actions";
 
 const Header = async () => {
   const session = await auth();
+
+  const cartCount = await getCartItemsCount();
 
   return (
     <header className="fixed w-full z-50 h-20 text-white bg-black/10 backdrop-blur-lg">
@@ -37,6 +40,11 @@ const Header = async () => {
               className="text-lg font-medium hover:text-orange-500"
             >
               CART
+              {cartCount > 0 && (
+                <span className="ml-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 font-bold text-sm text-black">
+                  {cartCount}
+                </span>
+              )}
             </Link>
             <a href="#" className="text-lg font-medium hover:text-orange-500">
               CONTACT
@@ -100,6 +108,11 @@ const Header = async () => {
                     className="text-lg font-medium hover:text-orange-500"
                   >
                     CART
+                    {cartCount > 0 && (
+                      <span className="ml-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 font-bold text-sm text-black">
+                        {cartCount}
+                      </span>
+                    )}
                   </Link>
                   <a
                     href="#"
