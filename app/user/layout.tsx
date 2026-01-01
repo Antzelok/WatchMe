@@ -25,7 +25,6 @@ export default function UserLayout({
             <div className="ml-auto items-center flex space-x-4"></div>
           </div>
         </div>
-
         <div className="flex-1 space-y-4 p-4 w-full mx-auto">{children}</div>
       </div>
     </>
