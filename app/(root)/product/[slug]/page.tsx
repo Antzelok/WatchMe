@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getMyCart } from "@/lib/actions/cart.actions";
 import AddToCart from "@/components/shared/product/add-to-cart";
-import { formatNumberWithDecimal } from "@/lib/utils";
+import { formatCurrency } from "@/lib/utils";
 
 const ProductDetailsPage = async (props: {
   params: Promise<{ slug: string }>;
@@ -51,7 +51,7 @@ const ProductDetailsPage = async (props: {
             </Badge>
 
             <span className="text-2xl font-semiboldtext-white">
-              ${formatNumberWithDecimal(product.price)}
+              {formatCurrency(product.price)}
             </span>
           </div>
 
@@ -77,7 +77,7 @@ const ProductDetailsPage = async (props: {
               <div className="flex justify-between">
                 <span className="text-gray-400">Price</span>
                 <span className="text-white font-semibold">
-                  ${formatNumberWithDecimal(product.price)}
+                  {formatCurrency(product.price)}
                 </span>
               </div>
 
