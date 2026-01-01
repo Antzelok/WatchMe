@@ -52,7 +52,7 @@ const Header = async () => {
 
             {session?.user?.role === "admin" ? (
               <Link
-                href="/admin"
+                href="/admin/overview"
                 className="text-lg font-medium hover:text-orange-500"
               >
                 ADMIN
@@ -130,7 +130,7 @@ const Header = async () => {
                   </a>
                   {session?.user?.role === "admin" ? (
                     <Link
-                      href="/admin"
+                      href="/admin/overview"
                       className="text-lg font-medium hover:text-orange-500"
                     >
                       ADMIN
