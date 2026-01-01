@@ -1,7 +1,7 @@
 import { APP_NAME } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
-import MainNav from "@/app/user/main-nav";
+import MainNav from "@/app/admin/main-nav";
 
 export default function AdminLayout({
   children,
