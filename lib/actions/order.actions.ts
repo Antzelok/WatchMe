@@ -11,9 +11,7 @@ import { revalidatePath } from "next/cache";
 import { PAGE_SIZE } from "../constants";
 import { Prisma } from "@prisma/client";
 
-// --------------------
 // Create order
-// --------------------
 export async function createOrder() {
   try {
     const session = await auth();
@@ -88,9 +86,7 @@ export async function createOrder() {
   }
 }
 
-// --------------------
 // Get order by ID
-// --------------------
 export async function getOrderById(orderId: string) {
   const data = await prisma.order.findFirst({
     where: { id: orderId },
@@ -102,9 +98,7 @@ export async function getOrderById(orderId: string) {
   return convertToPlainObject(data);
 }
 
-// --------------------
 // Mark order as paid
-// --------------------
 export async function updateOrderToPaid({
   orderId,
   paymentResult,
@@ -135,9 +129,7 @@ export async function updateOrderToPaid({
   return { success: true, message: "Order marked as paid" };
 }
 
-// --------------------
 // Get user's orders
-// --------------------
 export async function getMyOrders({
   limit = PAGE_SIZE,
   page,
@@ -161,45 +153,21 @@ export async function getMyOrders({
   return { data, totalPages: Math.ceil(dataCount / limit) };
 }
 
-// --------------------
 // Get all orders (admin)
-// --------------------
-export async function getAllOrders({
-  limit = PAGE_SIZE,
-  page,
-  query,
-}: {
-  limit?: number;
-  page: number;
-  query: string;
-}) {
-  const queryFilter: Prisma.OrderWhereInput =
-    query && query !== "all"
-      ? {
-          user: {
-            name: {
-              contains: query,
-              mode: "insensitive",
-            } as Prisma.StringFilter,
-          },
-        }
-      : {};
-
+export async function getAllOrders() {
   const data = await prisma.order.findMany({
-    where: queryFilter,
     orderBy: { createdAt: "desc" },
-    take: limit,
-    skip: (page - 1) * limit,
-    include: { user: { select: { name: true } } },
+    include: {
+      user: {
+        select: { name: true },
+      },
+    },
   });
 
-  const dataCount = await prisma.order.count();
-  return { data, totalPages: Math.ceil(dataCount / limit) };
+  return { data };
 }
 
-// --------------------
 // Delete order
-// --------------------
 export async function deleteOrder(id: string) {
   try {
     await prisma.order.delete({ where: { id } });
@@ -210,16 +178,12 @@ export async function deleteOrder(id: string) {
   }
 }
 
-// --------------------
 // Mark COD order as paid
-// --------------------
 export async function updateOrderToPaidCOD(orderId: string) {
   return updateOrderToPaid({ orderId });
 }
 
-// --------------------
 // Mark order as delivered
-// --------------------
 export async function deliverOrder(orderId: string) {
   try {
     const order = await prisma.order.findFirst({ where: { id: orderId } });
@@ -238,9 +202,7 @@ export async function deliverOrder(orderId: string) {
   }
 }
 
-// --------------------
 // Order summary / sales data
-// --------------------
 export async function getOrderSummary() {
   const ordersCount = await prisma.order.count();
   const productsCount = await prisma.product.count();
