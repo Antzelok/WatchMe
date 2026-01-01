@@ -7,6 +7,10 @@ import React from "react";
 
 const links = [
   {
+    title: "Home",
+    href: "/",
+  },
+  {
     title: "Profile",
     href: "/user/profile",
   },
