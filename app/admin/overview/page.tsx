@@ -12,6 +12,7 @@ import { formatCurrency, formatDateTime, formatNumber } from "@/lib/utils";
 import { BadgeDollarSign, Barcode, CreditCard, Users } from "lucide-react";
 import Link from "next/link";
 import { auth } from "@/auth";
+import { signOutUser } from "@/lib/actions/user.actions";
 import Charts from "./charts";
 import { requireAdmin } from "@/lib/auth-guard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -41,9 +42,14 @@ const AdminOverviewPage = async () => {
             <AvatarImage src="/images/admin-avatar.png" alt="Admin" />
             <AvatarFallback>AD</AvatarFallback>
           </Avatar>
-          <Button variant="destructive" size="sm">
-            Logout
-          </Button>
+          <form action={signOutUser} className="w-full">
+            <Button
+              className="w-full py-4 px-4 h-4 justify-start"
+              variant="destructive"
+            >
+              Sign Out
+            </Button>
+          </form>
         </div>
       </div>
 
