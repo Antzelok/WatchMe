@@ -11,7 +11,6 @@ import { getOrderSummary } from "@/lib/actions/order.actions";
 import { formatCurrency, formatDateTime, formatNumber } from "@/lib/utils";
 import { BadgeDollarSign, Barcode, CreditCard, Users } from "lucide-react";
 import Link from "next/link";
-import { auth } from "@/auth";
 import { signOutUser } from "@/lib/actions/user.actions";
 import Charts from "./charts";
 import { requireAdmin } from "@/lib/auth-guard";
@@ -24,12 +23,6 @@ export const metadata = {
 
 const AdminOverviewPage = async () => {
   await requireAdmin();
-
-  const session = await auth();
-
-  if (session?.user?.role !== "admin") {
-    throw new Error("User not authorized");
-  }
 
   const summary = await getOrderSummary();
 
