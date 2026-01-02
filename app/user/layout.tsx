@@ -1,4 +1,5 @@
 import { APP_NAME } from "@/lib/constants";
+import { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import Link from "next/link";
 import MainNav from "@/app/user/main-nav";
@@ -11,6 +12,7 @@ export default function UserLayout({
   return (
     <>
       <div className="flex flex-col bg-black text-white h-screen w-full">
+        <Toaster position="bottom-right" />
         <div className="border-b w-full mx-auto">
           <div className="flex items-center h-16 px-4">
             <Link href="/" className="w-22">
