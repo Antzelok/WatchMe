@@ -1,5 +1,14 @@
 import { z } from "zod";
 import { PAYMENT_METHODS } from "./constants";
+import { formatNumberWithDecimal } from "./utils";
+
+const currency = z
+.coerce
+  .string()
+  .refine(
+    (value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimal(Number(value))),
+    "Price must have exactly two decimal places"
+  );
 
 // Schema for inserting products
 export const insertProductSchema = z.object({
@@ -10,7 +19,7 @@ export const insertProductSchema = z.object({
   description: z.string().min(3, "Description must be at least 3 characters"),
   stock: z.coerce.number(),
   images: z.array(z.string()).min(1, "Product must have at least one image"),
-  price: z.number().nonnegative("Price must be a positive number"),
+  price: currency,
 });
 
 // Schema for updating products
@@ -44,17 +53,15 @@ export const cartItemsSchema = z.object({
   slug: z.string().min(1, "Slug is required"),
   qty: z.number().int().nonnegative("Quantity must be a positive number"),
   image: z.string().min(1, "Image is required"),
-  price: z.number().nonnegative("Price must be a positive number"),
+  price: currency,
 });
 
 export const insertCartSchema = z.object({
   items: z.array(cartItemsSchema),
-  itemsPrice: z.number().nonnegative("Items price must be a positive number"),
-  totalPrice: z.number().nonnegative("Total price must be a positive number"),
-  shippingPrice: z
-    .number()
-    .nonnegative("Shipping price must be a positive number"),
-  taxPrice: z.number().nonnegative("Tax price must be a positive number"),
+  itemsPrice: currency,
+  totalPrice: currency,
+  shippingPrice: currency,
+  taxPrice: currency,
   sessionCartId: z.string().min(1, "Session cart ID is required"),
   userId: z.string().optional().nullable(),
 });
@@ -83,10 +90,10 @@ export const paymentMethodSchema = z
 // Schema for inserting order
 export const insertOrderSchema = z.object({
   userId: z.string().min(1, "User is required"),
-  itemsPrice: z.number().nonnegative("Items price must be positive"),
-  shippingPrice: z.number().nonnegative("Shipping price must be positive"),
-  taxPrice: z.number().nonnegative("Tax price must be positive"),
-  totalPrice: z.number().nonnegative("Total price must be positive"),
+  itemsPrice: currency,
+  totalPrice: currency,
+  shippingPrice: currency,
+  taxPrice: currency,
   paymentMethod: z.string().refine((data) => PAYMENT_METHODS.includes(data), {
     message: "Invalid payment method",
   }),
@@ -99,7 +106,7 @@ export const insertOrderItemSchema = z.object({
   slug: z.string(),
   image: z.string(),
   name: z.string(),
-  price: z.number().nonnegative("Price must be positive"),
+  price: currency,
   qty: z.number().int().nonnegative("Quantity must be positive"),
 });
 
