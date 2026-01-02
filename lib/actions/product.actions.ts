@@ -31,10 +31,9 @@ export async function getProductById(productId: string) {
 // Get all products
 export async function getAllProducts() {
   const products = await prisma.product.findMany();
-  return products.map((product) => ({
-    ...product,
-    price: product.price.toString(),
-  }));
+  return convertToPlainObject(
+    products.map((p) => ({ ...p, price: p.price.toString() }))
+  );
 }
 
 // Delete a product

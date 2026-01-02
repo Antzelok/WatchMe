@@ -41,11 +41,14 @@ export async function signInWithCredentials(
   }
 }
 
-// Sign user out
+// Sign out user
 export async function signOutUser() {
   const currentCart = await getMyCart();
-  await prisma.cart.delete({ where: { id: currentCart?.id } });
-  await signOut();
+  if (currentCart?.id) {
+    await prisma.cart.delete({ where: { id: currentCart.id } });
+  }
+
+  return signOut({ redirectTo: "/sign-in" });
 }
 
 // Sign up user
