@@ -21,4 +21,15 @@ export const SignUpDefaultValues = {
   confirmPassword: "",
 };
 
+export const productDefaultValues = {
+  name: "",
+  slug: "",
+  category: "",
+  images: [],
+  brand: "",
+  description: "",
+  price: "0",
+  stock: 0,
+};
+
 export const PAGE_SIZE = Number(process.env.PAGE_SIZE || 12);
