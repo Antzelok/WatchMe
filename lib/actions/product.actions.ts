@@ -15,7 +15,7 @@ export async function getProductBySlug(slug: string) {
 
   return {
     ...product,
-    price: Number(product.price), 
+    price: Number(product.price),
   };
 }
 
@@ -30,22 +30,11 @@ export async function getProductById(productId: string) {
 
 // Get all products
 export async function getAllProducts() {
-  try {
-    const products = await prisma.product.findMany({
-      orderBy: { createdAt: "desc" },
-    });
-
-    // Convert Decimal to number
-    const plainProducts = products.map((p) => ({
-      ...p,
-      price: Number(p.price),
-    }));
-
-    return plainProducts;
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    return [];
-  }
+  const products = await prisma.product.findMany();
+  return products.map((product) => ({
+    ...product,
+    price: product.price.toString(),
+  }));
 }
 
 // Delete a product
