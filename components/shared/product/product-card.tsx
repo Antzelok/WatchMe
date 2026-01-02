@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Product, Cart } from "@/types";
 import AddToCart from "@/components/shared/product/add-to-cart";
-import { formatCurrency } from "@/lib/utils";
+import ProductPrice from "@/components/shared/product/product-price";
 
 const ProductCard = ({ product, cart }: { product: Product; cart?: Cart }) => {
   return (
@@ -24,14 +24,14 @@ const ProductCard = ({ product, cart }: { product: Product; cart?: Cart }) => {
       </CardHeader>
 
       <CardContent className="p-2 grid gap-4">
-        <div className="text-sm">{product.brand}</div>
+        <div className="text-sm text-gray-400">{product.brand}</div>
 
         <Link href={`/product/${product.slug}`}>
           <h2 className="text-sm font-medium">{product.name}</h2>
         </Link>
-        <p className="text-sm font-bold text-white">
-          {formatCurrency(product.price)}
-        </p>
+
+        {/* Price */}
+        <ProductPrice value={Number(product.price)} className="text-white" />
 
         <div className="flex items-center justify-between gap-4">
           {product.stock > 0 ? (

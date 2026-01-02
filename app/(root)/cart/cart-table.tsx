@@ -14,10 +14,10 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { formatCurrency } from "@/lib/utils";
 import { ArrowRight, Loader } from "lucide-react";
 import { useRouter } from "next/navigation";
 import AddToCart from "@/components/shared/product/add-to-cart";
+import ProductPrice from "@/components/shared/product/product-price";
 
 const CartTable = ({ cart }: { cart?: Cart }) => {
   const router = useRouter();
@@ -60,7 +60,13 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                     <TableCell>
                       <AddToCart cart={cart} item={item} />
                     </TableCell>
-                    <TableCell className="text-right">${item.price}</TableCell>
+                    <TableCell className="flex-center">
+                      {/* Individual Item Price */}
+                      <ProductPrice
+                        value={Number(item.price)}
+                        className="text-lg"
+                      />
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -71,9 +77,11 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
             <CardContent className="p-4 gap-4">
               <div className="pb-4 text-xl">
                 Subtotal ({cart.items.reduce((a, c) => a + c.qty, 0)}):
-                <span className="font-bold">
-                  {formatCurrency(cart.itemsPrice)}
-                </span>
+                {/* Total Price */}
+                <ProductPrice
+                  value={Number(cart.itemsPrice)}
+                  className="font-bold"
+                />
               </div>
               <Button
                 className="w-full bg-orange-500 text-black"

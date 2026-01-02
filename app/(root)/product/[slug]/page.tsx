@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getMyCart } from "@/lib/actions/cart.actions";
 import AddToCart from "@/components/shared/product/add-to-cart";
-import { formatCurrency } from "@/lib/utils";
+import ProductPrice from "@/components/shared/product/product-price";
 
 const ProductDetailsPage = async (props: {
   params: Promise<{ slug: string }>;
@@ -50,9 +50,11 @@ const ProductDetailsPage = async (props: {
               {product.stock > 0 ? "In Stock" : "Out Of Stock"}
             </Badge>
 
-            <span className="text-2xl font-semiboldtext-white">
-              {formatCurrency(product.price)}
-            </span>
+            {/* Main Price Display */}
+            <ProductPrice
+              value={Number(product.price)}
+              className="text-3xl font-semibold"
+            />
           </div>
 
           {product.stock > 0 && (
@@ -62,7 +64,7 @@ const ProductDetailsPage = async (props: {
                 productId: product.id,
                 name: product.name,
                 slug: product.slug,
-                price: product.price,
+                price: product.price.toString(),
                 qty: 1,
                 image: product.images![0],
               }}
@@ -74,11 +76,13 @@ const ProductDetailsPage = async (props: {
         <div className="col-span-1 hidden md:block">
           <Card className="bg-black border border-gray-700">
             <CardContent className="p-6 flex flex-col gap-4">
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-gray-400">Price</span>
-                <span className="text-white font-semibold">
-                  {formatCurrency(product.price)}
-                </span>
+                {/* Sidebar Price Display */}
+                <ProductPrice
+                  value={Number(product.price)}
+                  className="text-lg font-semibold text-gray-400"
+                />
               </div>
 
               <div className="flex justify-between">
@@ -102,7 +106,7 @@ const ProductDetailsPage = async (props: {
                     productId: product.id,
                     name: product.name,
                     slug: product.slug,
-                    price: product.price,
+                    price: product.price.toString(),
                     qty: 1,
                     image: product.images![0],
                   }}
