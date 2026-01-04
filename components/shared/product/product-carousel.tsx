@@ -11,7 +11,6 @@ import Image from "next/image";
 const carouselImages = [
   "/carousel/watchcarousel1.png",
   "/carousel/watchcarousel2.png",
-  "/carousel/watchcarousel13.png",
 ];
 
 const ProductCarousel = () => {
