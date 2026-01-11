@@ -6,10 +6,6 @@ import { cn } from "@/lib/utils";
 import React from "react";
 
 const links = [
-   {
-    title: "Home",
-    href: "/",
-  },
   {
     title: "Overview",
     href: "/admin/overview",

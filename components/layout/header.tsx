@@ -59,7 +59,7 @@ const Header = async () => {
               </Link>
             ) : (
               <Link
-                href="/user"
+                href="/user/profile"
                 className="text-lg font-medium hover:text-orange-500"
               >
                 ACCOUNT
@@ -137,7 +137,7 @@ const Header = async () => {
                     </Link>
                   ) : (
                     <Link
-                      href="/user"
+                      href="/user/profile"
                       className="text-lg font-medium hover:text-orange-500"
                     >
                       ACCOUNT
