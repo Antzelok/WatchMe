@@ -21,8 +21,8 @@ const AdminProductsPage = async () => {
   return (
     <div className="space-y-2">
       <div className="flex-between">
-        <div className="flex items-center gap-3">
-          <h1 className="h2-bold">Products</h1>
+        <div className="flex items-center gap-5 m-3">
+          <h1 className="h1-bold">Products</h1>
 
           <Button asChild variant="default">
             <Link href="/admin/products/create">Create Product</Link>
@@ -50,7 +50,7 @@ const AdminProductsPage = async () => {
                 </TableCell>
                 <TableCell>{product.category}</TableCell>
                 <TableCell>{product.stock}</TableCell>
-                <TableCell className="flex gap-1">
+                <TableCell className="flex gap-5">
                   <Button asChild variant="outline" size="sm">
                     <Link href={`/admin/products/${product.id}`}>Edit</Link>
                   </Button>

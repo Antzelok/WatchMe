@@ -28,7 +28,7 @@ const AdminUserPage = async () => {
     <div className="space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="h2-bold">Users</h1>
+        <h1 className="h1 font-bold">Users</h1>
       </div>
 
       {/* Table */}
