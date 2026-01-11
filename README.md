@@ -18,18 +18,6 @@ WatchMe is a **premium e-commerce web application** showcasing high-quality wris
 - **CSS / Tailwind CSS** – Styling  
 - **Railway** – Hosting and deployment  
 
-## Project Structure
-├── app/             # Next.js app routes and pages
-├── components/      # Reusable UI components
-├── db/              # Database logic or API helpers
-├── lib/             # Utility functions
-├── prisma/          # Prisma schema and migrations
-├── public/          # Images and static assets
-├── types/           # TypeScript types
-├── package.json     # Dependencies and scripts
-├── next.config.ts   # Next.js configuration
-└── README.md        # Project documentation
-
 ## Getting Started
 ### Prerequisites
 - Node.js v18+  
