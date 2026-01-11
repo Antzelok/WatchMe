@@ -37,7 +37,6 @@ const AdminProductsPage = async () => {
               <TableHead className="text-right">PRICE</TableHead>
               <TableHead>CATEGORY</TableHead>
               <TableHead>STOCK</TableHead>
-              <TableHead>RATING</TableHead>
               <TableHead className="w-25">ACTIONS</TableHead>
             </TableRow>
           </TableHeader>
